@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: managed-disk-dynamic-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: managed-disk-dynamic-storageclass
+  resources:
+    requests:
+      storage: 5Gi

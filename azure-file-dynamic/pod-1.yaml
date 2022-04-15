@@ -1,0 +1,24 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-azure-file-dynamic-1
+spec:
+  containers:
+  - name: nginx-azure-file-dynamic-1
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
+      subPath: azure
+  nodeName: aks-nodepool1-12796734-vmss000000
+  volumes:
+    - name: volume
+      persistentVolumeClaim:
+        claimName: my-azurefile-dynamic-pvc

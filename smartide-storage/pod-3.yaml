@@ -1,0 +1,17 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-azure-file-dynamic-3
+spec:
+  containers:
+  - name: nginx-azure-file-dynamic-3
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+    volumeMounts:
+    - mountPath: "/smartide-data/service-redis"
+      name: volume
+      subPath: "smartide-data/service-redis"
+  nodeName: aks-nodepool1-12796734-vmss000001
+  volumes:
+    - name: volume
+      persistentVolumeClaim:
+        claimName: smartide-wsxxx-pvc

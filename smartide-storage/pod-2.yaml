@@ -1,0 +1,17 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-azure-file-dynamic-2
+spec:
+  containers:
+  - name: nginx-azure-file-dynamic-2
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+    volumeMounts:
+    - mountPath: "/smartide-data/service-mysql"
+      name: volume
+      subPath: "smartide-data/service-mysql"
+  nodeName: aks-nodepool1-12796734-vmss000000
+  volumes:
+    - name: volume
+      persistentVolumeClaim:
+        claimName: smartide-wsxxx-pvc
