@@ -1,0 +1,17 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-azure-file-dynamic-4
+spec:
+  containers:
+  - name: nginx-azure-file-dynamic-4
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+    volumeMounts:
+    - mountPath: "/home/smartide/.m2"
+      name: disk-volume
+      subPath: "maven/.m2"
+  nodeName: aks-nodepool1-12796734-vmss000001
+  volumes:
+    - name: disk-volume
+      persistentVolumeClaim:
+        claimName: smartide-disk-pvc

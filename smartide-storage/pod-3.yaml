@@ -8,10 +8,10 @@ spec:
     image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     volumeMounts:
     - mountPath: "/smartide-data/service-redis"
-      name: volume
+      name: ws-volume
       subPath: "smartide-data/service-redis"
   nodeName: aks-nodepool1-12796734-vmss000001
   volumes:
-    - name: volume
+    - name: ws-volume
       persistentVolumeClaim:
         claimName: smartide-wsxxx-pvc

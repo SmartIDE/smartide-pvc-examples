@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName:  smartide-storageclass
+  storageClassName:  smartide-file-storageclass
   resources:
     requests:
       storage: 10Gi

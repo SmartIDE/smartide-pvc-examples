@@ -8,16 +8,16 @@ spec:
     image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     volumeMounts:
     - mountPath: "/home/smartide"
-      name: volume
+      name: ws-volume
       subPath: "home/smartide"
     - mountPath: "/home/project/"
-      name: volume
+      name: ws-volume
       subPath: "home/project/"
     - mountPath: "/smartide-data"
-      name: volume
+      name: ws-volume
       subPath: "smartide-data"
   nodeName: aks-nodepool1-12796734-vmss000000
   volumes:
-    - name: volume
+    - name: ws-volume
       persistentVolumeClaim:
         claimName: smartide-wsxxx-pvc
